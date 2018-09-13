@@ -1,0 +1,23 @@
+
+
+
+<ion-content padding>
+    <div class="head" text-center style="margin-top:120px">
+        <img src="assets/imgs/BAG.png" alt="chat">
+  </div>
+      <ion-row class="login-form">
+        <ion-col>
+            <ion-list inset>
+              <ion-item style="margin-top: 60px;">
+                <ion-input type="Email" placeholder="Your email address" [(ngModel)]="credeintials.email" ></ion-input>
+              </ion-item>
+              <ion-item style="margin-top:5px">
+                  <ion-input type="password" placeholder="Your password" [(ngModel)]="credeintials.password"></ion-input>
+              </ion-item>
+          </ion-list>
+          <button ion-button block (click)="onSignin()"  class="login-button">Sign in</button>
+          <button (click)="reset()" class="create-account" style="margin-top: 5px;">forget your password?<b> Reset Password </b></button>
+
+        </ion-col>
+     </ion-row>
+</ion-content>

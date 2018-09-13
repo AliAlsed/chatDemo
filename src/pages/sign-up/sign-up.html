@@ -1,0 +1,44 @@
+<ion-content padding>
+  <div class="head" text-center style="margin-top:120px">
+    <img src="assets/imgs/BAG.png" alt="chat">
+  </div>
+  <ion-row class="account-form">
+    <ion-col>
+      <ion-list inset>
+        <ion-item style="margin-top: 86px;">
+          <ion-input type="email" placeholder="Email" [(ngModel)]="newuser.email"></ion-input>
+        </ion-item>
+        <ion-item style="margin-top: 5px;">
+          <ion-input type="password" placeholder="password" [(ngModel)]="newuser.password"></ion-input>
+        </ion-item>
+        <ion-item style="margin-top: 5px;">
+          <ion-input type="text" placeholder="UserName" [(ngModel)]="newuser.displayName"></ion-input>
+        </ion-item>
+        <ion-item style="margin-top: 5px;">
+          <ion-input type="text" placeholder="Phonenumber" [(ngModel)]="newuser.phone"></ion-input>
+        </ion-item>
+        <ion-item style="margin-top: 5px;">
+          <ion-datetime placeholder="Date of Birth " displayFormat="DD/MM/YYYY" [(ngModel)]="newuser.DOB"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-select placeholder="job" [(ngModel)]="newuser.job" style="margin-top: 5px;">
+            <ion-option value="patient">patient</ion-option>
+            <ion-option value="Clincian">Clincian</ion-option>
+            <ion-option value="family">family</ion-option>
+            <ion-option value="emergency">emergency</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <button ion-button block (click)="signupUser()" class="signup-button">
+        <b>Register</b>
+      </button>
+    </ion-col>
+  </ion-row>
+  <div text-center style="align-content: center;text-align:center;vertical-align: middle">
+    <button (click)="launchLogin()" class="create-account" style="margin-top: 10px" text-center>
+      Already have Account ?Login
+    </button>
+  </div>
+
+</ion-content>
