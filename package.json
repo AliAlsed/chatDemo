@@ -28,8 +28,10 @@
     "@ionic-native/file": "^4.5.3",
     "@ionic-native/onesignal": "^4.6.0",
     "@ionic-native/splash-screen": "4.4.0",
+    "@ionic-native/sqlite": "^4.14.0",
     "@ionic-native/status-bar": "4.4.0",
     "@ionic/storage": "2.1.3",
+    "angular-uuid": "0.0.4",
     "angular2-uuid": "^1.1.1",
     "angularfire2": "^5.0.0-rc.6",
     "cordova-android": "^6.3.0",
@@ -67,22 +69,18 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-android-permissions": {}
+      "cordova-plugin-android-permissions": {},
+      "cordova-sqlite-storage": {}
     },
     "build": {
-    "appId": "com.ali.ionic-electron-test",
-
-    "electronVersion": "1.7.5",
-    "asar":false,
-
-   "files": [
-      "www/**/*",
-      "electron/*"
-    ]
-  }
-},
-
-    "platforms": []
-  }
-
-
+      "appId": "com.ali.ionic-electron-test",
+      "electronVersion": "1.7.5",
+      "asar": false,
+      "files": [
+        "www/**/*",
+        "electron/*"
+      ]
+    }
+  },
+  "platforms": []
+}

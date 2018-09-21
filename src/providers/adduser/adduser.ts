@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
-import { DataSnapshot } from '@firebase/database-types';
 
 /*
   Generated class for the AdduserProvider provider.

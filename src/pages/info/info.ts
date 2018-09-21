@@ -22,11 +22,13 @@ export class InfoPage {
   ionViewDidLoad() {
     console.log(this.navParams.get('id'));
     this.state=this.navParams.get('persent');
-    this._StatusProvider.getuserStatus(this.navParams.get('id'),this.navParams.get('persent')).on("value", snapshot => {
-      snapshot.forEach(snap => {
+    this._StatusProvider.getuserStatus(this.navParams.get('id'),this.navParams.get('persent')).on("value", (snapshot) => {
+      snapshot.forEach((snap) => {        
         console.log(snap.val());
         this.res.push(snap.val())
+        return false;
       })
     })
+
   }
 }

@@ -11,16 +11,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { Camera } from '@ionic-native/camera';
-import { File } from '@ionic-native/file';
+import { SQLite } from '@ionic-native/sqlite';
 import { AngularFireDatabaseModule,AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuth,AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { IonicStorageModule } from '@ionic/storage'
 import {config} from './firebase.config';
 import { AdduserProvider } from '../providers/adduser/adduser';
 import { GroupsProvider } from '../providers/groups/groups';
 import { StatusProvider } from '../providers/status/status';
 import { InfoPage } from '../pages/info/info';
+import { DatabaseProvider } from '../providers/database/database';
 @NgModule({
   declarations: [
     MyApp,
@@ -47,15 +48,15 @@ import { InfoPage } from '../pages/info/info';
     AngularFireDatabase,
     AdduserProvider,
     ImghandlerProvider,
-    File,
     Camera,
-    Storage,
     DataServiceProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ChatProvider,
     RequestsProvider,
     GroupsProvider,
-    StatusProvider
+    StatusProvider,
+    SQLite,
+    DatabaseProvider
   ]
 })
 export class AppModule {}

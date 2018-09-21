@@ -14,7 +14,7 @@ import { UUID } from 'angular2-uuid';
 export class RequestsProvider {
   firereq = firebase.database().ref('/requests');
   firefriends = firebase.database().ref('/friends');
-
+  firekey = firebase.database().ref('/keys');
   userdetails;
   myfriends;
   constructor(public userservice: AdduserProvider, public events: Events) {
@@ -63,12 +63,20 @@ export class RequestsProvider {
       this.firefriends.child(firebase.auth().currentUser.uid).push({
         uid: buddy.uid,
         sessionkey:uuid
+        
       }).then(() => {
         this.firefriends.child(buddy.uid).push({
           uid: firebase.auth().currentUser.uid,
           sessionkey:uuid
         }).then(() => {
           this.deleterequest(buddy).then(() => {
+        this.firekey.child(firebase.auth().currentUser.uid).child(buddy.uid).set({
+          sessionkey:uuid
+        }).then(()=>{
+          this.firekey.child(buddy.uid).child(firebase.auth().currentUser.uid).set({
+            sessionkey:uuid
+          })
+        })
           resolve(true);
         })
 
@@ -120,5 +128,16 @@ export class RequestsProvider {
 
     })
   }
+  getmykey(friend){
+    var promise = new Promise((resolve, reject) => {
+      this.firekey.child(firebase.auth().currentUser.uid).child(friend).once('value', (snapshot) => {
+        resolve(snapshot.val());
+      }).catch((err) => {
+        reject(err);
+      })
+    })
+    return promise;
+  }
+
 
 }
