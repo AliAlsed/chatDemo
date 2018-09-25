@@ -2,14 +2,14 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>{{buddy.job}} : {{buddy.displayName}} </ion-title>
+    <ion-title>{{ key}}</ion-title>
     <ion-buttons end>
       <button ion-button (click)="sendPicMsg()">
       <ion-icon name="camera"></ion-icon>
       </button>
-      <button ion-button (click)="goStatus(buddy)"*ngIf="show">
+      <button ion-button (click)="goStatus(buddy)">
         <ion-icon name="information"></ion-icon>
-        </button>
+      </button>
     </ion-buttons>
   </ion-navbar>
 

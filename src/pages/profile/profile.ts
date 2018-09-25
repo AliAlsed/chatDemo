@@ -26,6 +26,9 @@ export class ProfilePage{
   public name:any;
   public email:any;
   public dob:any;
+  public loader = this.loadingCtrl.create({
+    content: 'Please wait....'
+  });
   profile ={
     name:'',
     email:'',
@@ -38,14 +41,13 @@ export class ProfilePage{
     public database:AngularFireDatabase,public Data:DataServiceProvider,
      public nav:NavController,public app:App, public loadingCtrl:LoadingController) {
 
+
   }
 
 
   public userImage:any;
 
-  loader = this.loadingCtrl.create({
-    content: 'Please wait....'
-  });
+
   ionViewWillEnter() {
     this.loader.present();
     //getuserdetails()

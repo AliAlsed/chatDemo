@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <ion-grid>
+ <!-- <ion-grid>
     <ion-row>
       <ion-col col-4 style="margin-top: 55px;">
         <img src="assets/imgs/medical.png" alt="" srcset="" (click)="info('Press')"/>
@@ -24,4 +24,14 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+-->
+<ion-list *ngFor="let item of data">
+<ion-item style="color:black">
+  {{item?.id}} <br>
+  {{item?.user}} <br>
+  {{item?.friend}} <br>
+  {{item?.key}} <br>
+
+</ion-item>
+</ion-list>
 </ion-content>

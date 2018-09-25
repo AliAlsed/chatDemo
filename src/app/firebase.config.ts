@@ -1,11 +1,10 @@
 export const config = {
-  apiKey: "AIzaSyBjdrU0S4BQEOur1ie8O8BiorxdORsi1fI",
-  authDomain: "healthcareioe.firebaseapp.com",
-  databaseURL: "https://healthcareioe.firebaseio.com",
-  projectId: "healthcareioe",
-  storageBucket: "",
-  messagingSenderId: "840435217494"
-
+  apiKey: "AIzaSyA7hyspem1cdF46HdfnDvzMa0GLW6Aj3EQ",
+  authDomain: "e-health-dd5bc.firebaseapp.com",
+  databaseURL: "https://e-health-dd5bc.firebaseio.com",
+  projectId: "e-health-dd5bc",
+  storageBucket: "e-health-dd5bc.appspot.com",
+  messagingSenderId: "644401346697"
 }
 
 
