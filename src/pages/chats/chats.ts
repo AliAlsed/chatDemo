@@ -6,6 +6,7 @@ import firebase from 'firebase';
 import { AdduserProvider } from '../../providers/adduser/adduser';
 import { DatabaseProvider } from '../../providers/database/database';
 import { SQLiteObject, SQLite } from '@ionic-native/sqlite';
+import { RequestsProvider } from '../../providers/requests/requests';
 
 /**
  * Generated class for the ChatsPage page.
@@ -25,6 +26,8 @@ export class ChatsPage {
   newmessage;
   key: any;
   allmessages = [];
+  res = [];
+  ses=[];
   photoURL;
   imgornot;
   show = false;
@@ -34,6 +37,7 @@ export class ChatsPage {
     public alertCtrl: AlertController,
     public platform: Platform,
     public userP: AdduserProvider,
+    public keys:RequestsProvider,
     public _DatabaseProvider: DatabaseProvider,
     private toastCtrl: ToastController) {
     if (this.platform.ready) {
@@ -93,59 +97,27 @@ export class ChatsPage {
     })
 
   }
-  getKey() {
-    this.sqlite.create({
-      name: 'ionicdb.db',
-      location: 'default'
-    }).then((db: SQLiteObject) => {
-        db.executeSql('SELECT * FROM keys WHERE friendid=?', [this.buddy.uid])
-          .then(res => {
-            let toast = this.toastCtrl.create({
-              message: `User was added successfully ${res}`,
-              duration: 3000,
-              position: 'top'
-            });
-
-            toast.onDidDismiss(() => {
-              console.log('Dismissed toast');
-            });
-
-            toast.present();
-
-            if (res.rows.length > 0) {
-              this.key = res.rows.item(0).key;
-              let toast = this.toastCtrl.create({
-                message: `User was added successfully ${res.rows.item(0)}`,
-                duration: 3000,
-                position: 'bottom'
-              });
-
-              toast.present();
-            }
-          }, (err) => {
-              let toast = this.toastCtrl.create({
-                message: `User was added successfully ${err}`,
-                duration: 3000,
-                position: 'bottom'
-              });
-
-              toast.present();
-          })
-
-      })
-  }
+  
 
   ionViewDidLoad() {
-    this.getKey();
+    this._DatabaseProvider.readKeys(this.buddy.uid).then((val)=>{
+      this.key=val;
+    })
+    this.keys.getsessionkey().on("value", (snapshot) => {
+      snapshot.forEach((snap) => {        
+        this.res.push(snap.val().ks)
+        this.ses.push(snap.key)
+        
+        return false;
+      })
+    })
     this.userP.getuserdetails().then((res: any) => {
       console.log(res)
       if (this.buddy.job == "patient") {
-        console.log(true);
-        console.log(this.buddy)
         this.show = true;
       }
     })
-
+    console.log(this.key);
   }
   goStatus(buddy) {
     this.navCtrl.push('StatusPage', { 'patient': buddy });

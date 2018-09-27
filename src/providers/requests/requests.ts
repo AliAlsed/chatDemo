@@ -13,6 +13,7 @@ import { UUID } from 'angular2-uuid';
 @Injectable()
 export class RequestsProvider {
   firereq = firebase.database().ref('/requests');
+  firesession = firebase.database().ref('/keysession');
   firefriends = firebase.database().ref('/friends');
   firekey = firebase.database().ref('/keys');
   userdetails;
@@ -56,13 +57,11 @@ export class RequestsProvider {
   })
   }
 
-  acceptrequest(buddy) {
-    let uuid = UUID.UUID();
+  acceptrequest(buddy,uuid) {
     var promise = new Promise((resolve, reject) => {
       this.myfriends = [];
       this.firefriends.child(firebase.auth().currentUser.uid).push({
         uid: buddy.uid,
-        sessionkey:uuid
         
       }).then(() => {
         this.firefriends.child(buddy.uid).push({
@@ -137,6 +136,15 @@ export class RequestsProvider {
       })
     })
     return promise;
+  }
+  getsessionkey():firebase.database.Reference{
+      return this.firesession;
+  }
+  removesession(key){
+    return this.firesession.child(key).remove();
+  }
+  removekey(friend){
+   return this.firekey.child(firebase.auth().currentUser.uid).child(friend).child('sessionkey').remove();
   }
 
 
